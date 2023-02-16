@@ -67,7 +67,7 @@ def clicked_draw():
     print(paramN, paramLg, paramX, paramY)
     draw_square(paramN, paramLg, paramX, paramY )
 
-drawButton = Button(window,text= " Rysuj ", command=clicked_draw)
+drawButton = Button(window, text= " Rysuj ", command=clicked_draw)
 drawButton.grid(column=0, row=0)
 
 window.mainloop()
