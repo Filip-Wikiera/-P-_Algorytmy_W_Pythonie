@@ -9,7 +9,7 @@ paramN, paramLg, parX, ParY = 6, 250, 15, 15
 NapisN = Label(window, text=" N=")
 NapisN.grid(column=0, row=1, padx=5, pady=5)
 editN = Entry()
-editN.insert(END, '6')
+editN.insert(END, '3')
 editN.grid(column=1, row=1)
 
 NapisLg = Label(window, text=" Lg=")
@@ -47,14 +47,18 @@ def draw_square(n, Lg, x, y):
         canvas.create_line(x, y, x+Lg, y)
         canvas.create_line(x+Lg, y, x+Lg, y+Lg)
         canvas.create_line(x+Lg, y+Lg, x, y+Lg)
-        canvas.create_line(x, y+Lg, x, y+Lg/2)
-        canvas.create_line(x, y+Lg/2, x+Lg/2, y+Lg)
-        canvas.create_line(x+Lg/2, y+Lg, x+Lg, y+Lg/2)
-        canvas.create_line(x+Lg, y+Lg/2, x+Lg/2, y)
-        canvas.create_line(x+Lg/2, y, x+Lg/4, y+Lg/4)
-        draw_square(n-1, Lg/2, x+Lg/4, y+Lg/4)
-        canvas.create_line(x+Lg/4, y+Lg/4, x, y+Lg/2)
         canvas.create_line(x, y+Lg, x, y)
+
+        draw_square(n - 1, Lg / 2, x, y)
+        draw_square(n - 1, Lg / 2, x+Lg/2, y)
+        draw_square(n - 1, Lg / 2, x+Lg/2, y+Lg/2)
+        draw_square(n - 1, Lg / 2, x, y+Lg/2)
+
+        canvas.create_oval(x, y, x + Lg / 2, y + Lg / 2)
+        canvas.create_oval(x + Lg / 2, y + Lg / 2, x + Lg, y + Lg)
+        canvas.create_oval(x + Lg / 2, y, x + Lg, y + Lg / 2)
+        canvas.create_oval(x, y + Lg / 2, x + Lg / 2, y + Lg)
+
     canvas.grid(column=5, row=3, padx=1, pady=1)
 
 def clicked_draw():
@@ -69,5 +73,5 @@ def clicked_draw():
 
 drawButton = Button(window, text= " Rysuj ", command=clicked_draw)
 drawButton.grid(column=0, row=0)
-
+clicked_draw()
 window.mainloop()
